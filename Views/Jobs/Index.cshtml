@@ -1,0 +1,78 @@
+﻿@model List<BTL1.Models.Job>
+
+@{
+    ViewData["Title"] = "Danh sách việc làm";
+}
+@* Thanh navbar *@
+<nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/">BTL 1</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Home" asp-action="Index">Trang chủ</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Jobs" asp-action="Index">Công việc</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Account" asp-action="Login">Đăng nhập</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Account" asp-action="Register">Đăng ký</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+@* Thanh tìm kiếm *@
+<div class="container my-4">
+    <form asp-action="Index" method="get">
+        <div class="row">
+            <div class="col-md-5 mb-2">
+                <input type="text" name="keyword" class="form-control" placeholder="Tìm theo tên công việc..." value="@Context.Request.Query["keyword"]" />
+            </div>
+            <div class="col-md-5 mb-2">
+                <input type="text" name="location" class="form-control" placeholder="Tìm theo địa điểm..." value="@Context.Request.Query["location"]" />
+            </div>
+            <div class="col-md-2 mb-2">
+                <button type="submit" class="btn btn-success w-100">Tìm kiếm</button>
+            </div>
+        </div>
+    </form>
+</div>
+@* Container *@
+<div class="container">
+    <div class="row row-cols-1 row-cols-md-3 g-3">
+        @foreach (var job in Model)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow-sm rounded-4 p-2">
+                    <div class="d-flex align-items-center">
+                        <img src="@(string.IsNullOrEmpty(job.CompanyLogo) ? "/images/default-logo.png" : job.CompanyLogo)"
+                             class="me-3" style="width: 64px; height: 64px; object-fit: contain;" alt="Logo công ty">
+                        <div>
+                            <h6>
+                                <a asp-controller="Jobs" asp-action="Details" asp-route-id="@job.JobID">@job.Title</a>
+                            </h6>
+                            <small><strong>Công ty:</strong> @job.CompanyName</small><br />
+                            <small><strong>Lương:</strong> @job.Salary</small><br />
+                            <small><strong>Địa điểm:</strong> @job.Location</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+@* Footer *@
+<footer class="bg-light text-center text-muted py-3 mt-4">
+    <div class="container">
+        <p>&copy; 2025 BTL 1 - Website tuyển dụng</p>
+    </div>
+</footer>
+
+

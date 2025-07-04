@@ -1,0 +1,25 @@
+﻿@model BTL1.Models.Job
+
+@{
+    ViewData["Title"] = "Chi tiết công việc";
+}
+
+<div class="container my-4">
+    <h2 class="mb-3">@Model.Title</h2>
+    <div class="d-flex align-items-start">
+        <img src="@(string.IsNullOrEmpty(Model.CompanyLogo) ? "/images/default-logo.png" : Model.CompanyLogo)"
+             class="me-4" style="width: 100px; height: 100px; object-fit: contain;" alt="Logo công ty">
+
+        <div>
+            <p><strong>Công ty:</strong> @Model.CompanyName</p>
+            <p><strong>Lương:</strong> @Model.Salary</p>
+            <p><strong>Địa điểm:</strong> @Model.Location</p>
+            <p><strong>Ngày đăng:</strong> @Model.PostedDate.ToString("dd/MM/yyyy")</p>
+            <p><strong>Mô tả:</strong></p>
+            <p>@Model.Description</p>
+        </div>
+    </div>
+
+    <a asp-controller="Applications" asp-action="Apply" asp-route-jobId="@Model.JobID"
+       class="btn btn-success mt-3">Nộp hồ sơ</a>
+</div>
