@@ -3,7 +3,8 @@
 @{
     ViewData["Title"] = "Danh sách việc làm";
 }
-@* Thanh navbar *@
+
+<!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
     <div class="container-fluid">
         <a class="navbar-brand" href="/">BTL 1</a>
@@ -28,7 +29,8 @@
         </div>
     </div>
 </nav>
-@* Thanh tìm kiếm *@
+
+<!-- Tìm kiếm -->
 <div class="container my-4">
     <form asp-action="Index" method="get">
         <div class="row">
@@ -44,18 +46,24 @@
         </div>
     </form>
 </div>
-@* Container *@
+
+<!-- Danh sách việc làm -->
 <div class="container">
     <div class="row row-cols-1 row-cols-md-3 g-3">
         @foreach (var job in Model)
         {
-            <div class="col-md-4 mb-4">
-                <div class="card h-100 shadow-sm rounded-4 p-2">
-                    <div class="d-flex align-items-center">
-                        <img src="@(string.IsNullOrEmpty(job.CompanyLogo) ? "/images/default-logo.png" : job.CompanyLogo)"
-                             class="me-3" style="width: 64px; height: 64px; object-fit: contain;" alt="Logo công ty">
+            <div class="col">
+                <div class="card h-100 shadow-sm rounded-4 p-3">
+                    <div class="d-flex align-items-center mb-2">
+                        <!-- Icon công ty -->
+                        <div class="me-3 d-flex align-items-center justify-content-center bg-light rounded-circle"
+                             style="width: 64px; height: 64px;">
+                            <i class="bi bi-building fs-2 text-primary"></i>
+                        </div>
+
+                        <!-- Thông tin công việc -->
                         <div>
-                            <h6>
+                            <h6 class="mb-1">
                                 <a asp-controller="Jobs" asp-action="Details" asp-route-id="@job.JobID">@job.Title</a>
                             </h6>
                             <small><strong>Công ty:</strong> @job.CompanyName</small><br />
@@ -63,16 +71,20 @@
                             <small><strong>Địa điểm:</strong> @job.Location</small>
                         </div>
                     </div>
+
+                    <div>
+                        <a asp-controller="Jobs" asp-action="Details" asp-route-id="@job.JobID"
+                           class="btn btn-primary btn-sm w-100">Xem chi tiết</a>
+                    </div>
                 </div>
             </div>
         }
     </div>
 </div>
-@* Footer *@
+
+<!-- Footer -->
 <footer class="bg-light text-center text-muted py-3 mt-4">
     <div class="container">
-        <p>&copy; 2025 BTL 1 - Website tuyển dụng</p>
+        <p>&copy; 2025 Website tuyển dụng</p>
     </div>
 </footer>
-
-

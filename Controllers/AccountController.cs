@@ -38,27 +38,22 @@ namespace BTL1.Controllers
         [HttpPost]
         public IActionResult Login(string email, string password)
         {
-            var user = _context.Users.FirstOrDefault(u => u.Email == email && u.Password == password);
-
-            if (user == null)
-            {
-                // Debug xem database đang trỏ về đâu
-                var connStr = _context.Database.GetConnectionString();
-                Console.WriteLine($"Current Connection String: {connStr}");
-            }
+            var user = _context.Users
+                .Where(u => u.Email == email && u.Password == password)
+                .FirstOrDefault();
 
             if (user != null)
             {
-#pragma warning disable CS8604 // Possible null reference argument.
-                HttpContext.Session.SetString("FullName", user.FullName);
-#pragma warning restore CS8604 // Possible null reference argument.
+                // Lưu vào session
+                HttpContext.Session.SetString("FullName", user.FullName ?? "");
                 HttpContext.Session.SetInt32("UserID", user.UserID);
                 return RedirectToAction("Index", "Jobs");
             }
 
-            ViewBag.Error = "Sai thông tin đăng nhập";
+            ViewBag.Error = "Sai email hoặc mật khẩu!";
             return View();
         }
+
 
 
 

@@ -333,3 +333,4 @@ D:\BackEnd\BTL\BTL1\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.Scripting.resourc
 D:\BackEnd\BTL\BTL1\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.Scripting.resources.dll
 D:\BackEnd\BTL\BTL1\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.Scripting.resources.dll
 D:\BackEnd\BTL\BTL1\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.Scripting.resources.dll
+D:\BackEnd\BTL\BTL1\obj\Debug\net9.0\BTL1.sourcelink.json
