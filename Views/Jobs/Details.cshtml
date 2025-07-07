@@ -20,6 +20,34 @@
         </div>
     </div>
 
-    <a asp-controller="Applications" asp-action="Apply" asp-route-jobId="@Model.JobID"
-       class="btn btn-success mt-3">Nộp hồ sơ</a>
+    <hr />
+
+    @if (Context.Session.GetString("FullName") != null)
+    {
+        <h4>Nộp hồ sơ online</h4>
+
+        <form asp-controller="Application" asp-action="Submit" asp-route-jobId="@Model.JobID" method="post" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label>Chọn file CV:</label>
+                <input type="file" name="resumeFile" class="form-control" required />
+            </div>
+            <button type="submit" class="btn btn-primary">Nộp CV</button>
+        </form>
+    }
+    else
+    {
+        <p>
+            <strong>Vui lòng <a asp-controller="Account" asp-action="Login">đăng nhập</a> để nộp CV.</strong>
+        </p>
+    }
+
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success mt-3">@TempData["Success"]</div>
+    }
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-danger mt-3">@TempData["Error"]</div>
+    }
+
 </div>

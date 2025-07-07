@@ -49,8 +49,21 @@
                                 <a class="nav-link text-dark" asp-controller="Account" asp-action="Register">Đăng ký</a>
                             </li>
                         }
-                    </ul>
+                        @if (Context.Session.GetString("Role") == "Admin")
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-controller="Admin" asp-action="Index">Quản lý</a>
+                            </li>
+                        }
+                        @if (Context.Session.GetString("Role") == "Admin")
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-controller="Application" asp-action="Manage">Quản lý CV</a>
+                            </li>
+                        }
 
+                        
+                    </ul>
                 </div>
             </div>
         </nav>

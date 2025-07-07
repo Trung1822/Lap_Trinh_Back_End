@@ -1,0 +1,33 @@
+﻿@model List<BTL1.Models.Application>
+
+@{
+    ViewData["Title"] = "Quản lý CV nộp";
+}
+
+<h2>Danh sách CV đã nộp</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Ứng viên</th>
+            <th>Việc làm</th>
+            <th>File CV</th>
+            <th>Ngày nộp</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.ApplicationID</td>
+                <td>@item.CandidateID</td>
+                <td>@item.JobID</td>
+                <td>
+                    <a href="~/uploads/@item.ResumePath" target="_blank">Xem CV</a>
+                </td>
+                <td>@item.AppliedDate.ToString("dd/MM/yyyy HH:mm")</td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,27 @@
+﻿@model List<BTL1.Models.Job>
+
+<h3>Quản lý việc làm</h3>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Tiêu đề</th>
+            <th>Địa điểm</th>
+            <th>Lương</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var j in Model)
+        {
+            <tr>
+                <td>@j.Title</td>
+                <td>@j.Location</td>
+                <td>@j.Salary</td>
+                <td>
+                    <a asp-action="EditJob" asp-route-id="@j.JobID" class="btn btn-warning btn-sm">Sửa</a>
+                    <a asp-action="DeleteJob" asp-route-id="@j.JobID" class="btn btn-danger btn-sm">Xóa</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -47,6 +47,7 @@ namespace BTL1.Controllers
                 // Lưu vào session
                 HttpContext.Session.SetString("FullName", user.FullName ?? "");
                 HttpContext.Session.SetInt32("UserID", user.UserID);
+                HttpContext.Session.SetString("Role", user.Role ?? "User");
                 return RedirectToAction("Index", "Jobs");
             }
 

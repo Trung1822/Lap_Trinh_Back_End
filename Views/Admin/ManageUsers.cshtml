@@ -1,0 +1,27 @@
+﻿@model List<BTL1.Models.User>
+
+<h3>Quản lý người dùng</h3>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Họ tên</th>
+            <th>Email</th>
+            <th>Vai trò</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var u in Model)
+        {
+            <tr>
+                <td>@u.FullName</td>
+                <td>@u.Email</td>
+                <td>@u.Role</td>
+                <td>
+                    <a asp-action="EditUser" asp-route-id="@u.UserID" class="btn btn-warning btn-sm">Sửa</a>
+                    <a asp-action="DeleteUser" asp-route-id="@u.UserID" class="btn btn-danger btn-sm">Xóa</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

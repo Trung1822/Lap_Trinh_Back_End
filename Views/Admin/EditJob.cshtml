@@ -1,0 +1,19 @@
+﻿@model BTL1.Models.Job
+
+<h3>Chỉnh sửa việc làm</h3>
+<form asp-action="EditJob" method="post">
+    <input type="hidden" asp-for="JobID" />
+    <div class="mb-3">
+        <label>Tiêu đề</label>
+        <input asp-for="Title" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label>Địa điểm</label>
+        <input asp-for="Location" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label>Lương</label>
+        <input asp-for="Salary" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-primary">Lưu</button>
+</form>

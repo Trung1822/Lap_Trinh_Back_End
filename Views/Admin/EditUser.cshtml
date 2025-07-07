@@ -1,0 +1,23 @@
+﻿@model BTL1.Models.User
+
+<h3>Chỉnh sửa người dùng</h3>
+<form asp-action="EditUser" method="post">
+    <input type="hidden" asp-for="UserID" />
+    <div class="mb-3">
+        <label>Họ tên</label>
+        <input asp-for="FullName" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label>Email</label>
+        <input asp-for="Email" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label>Mật khẩu</label>
+        <input asp-for="Password" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label>Vai trò</label>
+        <input asp-for="Role" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-primary">Lưu</button>
+</form>

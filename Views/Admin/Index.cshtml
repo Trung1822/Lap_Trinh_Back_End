@@ -1,0 +1,31 @@
+﻿@model List<BTL1.Models.User>
+
+<h3 class="mb-3">Quản lý người dùng</h3>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Họ tên</th>
+            <th>Email</th>
+            <th>Vai trò</th>
+            <th>Hành động</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>@user.UserID</td>
+                <td>@user.FullName</td>
+                <td>@user.Email</td>
+                <td>@user.Role</td>
+                <td>
+                    <a asp-action="EditUser" asp-route-id="@user.UserID" class="btn btn-sm btn-primary">Sửa</a>
+                    <a asp-action="DeleteUser" asp-route-id="@user.UserID" class="btn btn-sm btn-danger"
+                       onclick="return confirm('Bạn có chắc muốn xoá người dùng này?');">Xoá</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
